@@ -1,0 +1,123 @@
+
+<!Doctype>
+<html
+
+>
+    <title>And to all a good night...</title>
+    <meta charset="utf-8">
+    
+    <style type="text/css">
+      
+      html {
+      background:#008B8B}
+      
+      body {
+      font: 14px Arial, sans-serif;
+      color: white;
+      min-height:100px}
+      
+      p {
+      font: Avant Garde, sans-serif;
+      font-size: 14px;
+      color: black;}
+
+      hr {
+      clear:both;
+      margin:2em 0;
+      width:auto;
+      border-top:1px solid #ccc}
+
+      .headertitle {
+      color: grey;
+      }
+      
+      footer {
+      color: black;}
+      
+
+      </style>
+    
+    </head>
+  
+  <body>
+    <h1>This is a header</h1>
+    <hr></hr>
+    <p>Bacon ipsum dolor sit amet quis jowl elit commodo, pork esse ground round sint occaecat shoulder pork chop spare ribs adipisicing nisi laboris. Magna hamburger aliqua, sirloin beef ham eu pork. Sausage culpa drumstick anim consequat exercitation. Labore sed excepteur tri-tip, prosciutto incididunt do tempor pastrami venison pork belly esse tenderloin.</p>
+    <hr>
+    <p>Magna hamburger aliqua, sirloin beef ham eu pork. Sausage culpa drumstick anim consequat exercitation. Labore sed excepteur tri-tip, prosciutto incididunt do tempor pastrami venison pork belly esse tenderloin.</p>
+    </hr>
+    
+    <div class="somedivclass">
+      <h1 class="headertitle">h1 class is headertitle</h1>
+      
+      <div class="picture">
+	<p><img src="http://placehold.it/231x288"/></p>
+	</div>
+
+      <h2>Header 2</h2>
+      <p>aecat shoulder pork chop spare ribs adipisicing nisi laboris. Magna hamburger aliqua, sirloin beef ham eu pork. Sausage culpa drumstick anim consequat exe</p>
+      
+      <div class="someform">
+	<h3>Search something, this is a form</h3>
+	<form method="post" action="">
+	  <fieldset>
+	    <input title="Title of form! Search" class="search_input" name="searchbox" />
+	    <span class="button button_search">
+	      <button type="submit" name="go" value="locations">Find</button>
+	      </span>
+	    </fieldset>
+	  </form>
+	<hr></hr>
+	<section>
+	  This is a section
+	  
+	  <li>
+	    <dl>
+	      <dt>
+		<a href="stanford.edu/~sylvie">This is a link</a>
+		</dt>
+	      <dd class="image">
+		<img src="http://placehold.it/304x144"/>
+		</dd>
+	      <dd>
+		<p>I'm so cool, and so are you (not)</a>.</p>
+</dd>
+</dl>
+</li>
+</section>
+
+<h1>this is h1</h1>
+<h2>this is h2</h2>
+<h3>this is h3</h3>
+<h4>this is h4</h4>
+<h5>this is h5</h5>
+<h6>this is h6</h6>
+
+<ol> Ordered list:
+  bacon, side dish, your face</ol>
+
+<ul> Unordered list:
+  bacon, side dish, your face</ul>
+
+<li> List:
+  bacon, side dish, your face</li>
+
+<main>This is a main</main>
+
+<nav>This is a nav</nav>
+
+<article>This is an article</article>
+
+<aside>This is an aside...shh </aside>
+
+<address>This is an address.  My contact info is....</address>
+
+</body>
+
+<hr></hr>
+<footer>
+This is a footer. I'm going to copyright your butt.
+</footer>
+
+
+</html>
