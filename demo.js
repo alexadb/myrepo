@@ -1,1 +1,1 @@
-alert("You're first alert.");
+console.log("First console log.");
