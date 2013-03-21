@@ -1,3 +1,4 @@
+
 <?php
 # This function reads your DATABASE_URL configuration automatically set by Heroku
 # the return value is a string that will work with pg_connect
@@ -22,9 +23,9 @@ $result = pg_query($db, "SELECT statement goes here");
 	<head>
     	<title>TopChic: Daily Celebrity Fashion</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     	<!-- Bootstrap -->
-    	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+		<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
     	
     	<style>
     		body {
@@ -64,43 +65,54 @@ $result = pg_query($db, "SELECT statement goes here");
 
 <br><span id="CountedHates">0 Hates</span><br>
 <button onclick="AddHates()">Hate</button> 
-
-var Loves = 0;
-			function AddLoves(){
-			Loves = Loves + 1;
-			lovesChildRef.set({loves : Loves}); 
-			myDataRef.once('value', function(snapshot) {
-				var lovetotal = snapshot.val().loves;
-			});
-			document.getElementById('CountedLoves').innerHTML = lovetotal + ' Loves';
-			}
+-->
 
 
- -->
     	<script>
 			var myDataRef = new Firebase('https://sylvie-firebase.firebaseio.com/');
-			var lovesChildRef = myDataRef.child('loves');
-    		var hatesChildRef = myDataRef.child('hates');			
+    		var lovesChildRef = new Firebase('https://sylvie-firebase.firebaseio.com/loves');
+    		var hatesChildRef = new Firebase('https://sylvie-firebase.firebaseio.com/hates');
 			
 			function AddLoves(){
-				myDataRef.on('value', function(snapshot) {
+				myDataRef.once('value', function(snapshot) {
 				var lovetotal = snapshot.val().loves;
+				var hatetotal = snapshot.val().hates;
 		  		lovetotal = lovetotal + 1;
-				var string =  JSON.stringify(snapshot.val().hates);
-				document.getElementById('CountedLoves').innerHTML = lovetotal + ' Loves';
-				lovesChildRef.set({loves : lovetotal}); 
+		  		lovepercentage = parseInt(lovetotal/(lovetotal + hatetotal) * 100);
+		  		hatepercentage = 100 - lovepercentage;
+				document.getElementById('CountedLoves').innerHTML = lovepercentage + '%';
+				lovesChildRef.set(lovetotal); 
+				document.getElementById('CountedHates').innerHTML = hatepercentage + '%';
 				});			
-				}
+			}
 			
-			var Hates = 0;
 			function AddHates(){
-			Hates = Hates + 1;
-			document.getElementById('CountedHates').innerHTML = Hates + ' Hates';
-			hatesChildRef.set({hates : Hates});
+				myDataRef.once('value', function(snapshot) {
+				var lovetotal = snapshot.val().loves;
+				var hatetotal = snapshot.val().hates;
+				hatetotal = hatetotal + 1;
+				lovepercentage = parseInt(lovetotal/(lovetotal + hatetotal) * 100);
+		  		hatepercentage = 100 - lovepercentage;
+				document.getElementById('CountedHates').innerHTML = hatepercentage + '%';
+				hatesChildRef.set(hatetotal);
+				document.getElementById('CountedLoves').innerHTML = lovepercentage + '%';
+				});	
 			}
 		</script>
 
-<!-- need to add the numbers....store as number ->
+<!-- need to add the numbers....store as number 
+			function AddHates(){
+				myDataRef.once('value', function(snapshot) {
+				var hatetotal = snapshot.val().hates;
+				hatetotal = hatetotal + 1;
+				document.getElementById('CountedHates').innerHTML = hatetotal + ' Hates';
+				hatesChildRef.set(hatetotal);
+				
+				var lovetotal = snapshot.val().loves;
+				document.getElementById('CountedLoves').innerHTML = lovetotal + ' Loves';
+				});	
+
+->
 		<!--	
 				document.getElementById('CountedLoves').innerHTML = Loves + ' Loves';
  
@@ -134,16 +146,15 @@ var Loves = 0;
     	<div class="row-fluid">
 			<div class="span3" style="text-align:center;vertical-align:middle">
 			<input type = "image" img src="img/Heart-button.png" style="max-width:100%" onclick="AddLoves()">
-			<br><span id="CountedLoves">0 Loves</span><br>
-			<div id="result">Show</div>
+			<br><span id="CountedLoves"></span><br>
 			</div>
-			
 			
 			<div class="span6"><img src="img/TopChicTitleCrop.png" style="vertical-align:middle"></div>
 			
 			<div class="span3" style="text-align:center; vertical-align:middle"> 
 			<input type = "image" img src="img/Skull-button.png" style="max-width:100%" onclick="AddHates()">
-			<br><span id="CountedHates">0 Hates</span><br></div>
+			<br><span id="CountedHates" font-size="20"></span><br></div>
+			
 		</div><!--row-fluid -->
 		</div><!--span12 -->
 		</div><!--row-fluid -->
@@ -166,24 +177,6 @@ style="vertical-align:middle
 	</form>
 -->	
 	
-
-    <!--<input type="image" src="img/29-heart@2x.png" name="heart" id="heart" placeholder="Heart" width="60" height="60"> -->
-    
-    <!-- heart button -->
-    <!-- <a href="http://www.natural-environment.com/places/milford_sound.php" target="_blank">
-<img src="img/29-heart@2x.png" onclick="AddLoves()" border="2" style="border:2px solid black;max-width:100%;" alt="heart"/> -->
-    
-
-<!--Love/Hate buttons -->
-<!--
-<span id="CountedHates">0 Hates</span><br>
-<button onclick="AddHates()">Hate</button> -->
-
-
-<!-- var counter = 0;
-$("#update").click(function() {
-   counter++;
-}); -->
 
  <div class="addthis">
  <!-- AddThis Button BEGIN -->
